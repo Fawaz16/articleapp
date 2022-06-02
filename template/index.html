@@ -1,0 +1,152 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>article</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body style="height: 1750px;">
+    <section>
+<nav>
+<div class="wrapper">
+<h1>WELCOME TO Z-BLOG POST.</h1>
+<ul class="firstul">
+    <li>English Edition |</li>
+    <li>Print Edition |</li>
+    <li>Video |</li>
+    <li>Podcasts |</li>
+    <li>Latest headlines |</li>
+</ul>
+
+<div class="minidiv">
+    <ul>
+        <li><a href="{% url 'home' %}">HOME |</a></li>
+        <li><a href="">WORLD |</a></li>
+        <li><a href="">US |</a></li>
+        <li><a href="">POLITICS |</a></li>
+        <li><a href="">ECONOMY |</a></li>
+        <li><a href="">BUISINESS |</a></li>
+        <li><a href="">TECH |</a></li>
+        <li><a href="">MARKETS |</a></li>
+        <li><a href="">OPINION |</a></li>
+        <li><a href="">BOOK$ARTS |</a></li>
+        <li><a href="">REAL ESTATE |</a></li>
+        <li><a href="">LIFE |</a></li>
+        <li><a href="">MAGAZINES |</a></li>
+        <li><a href="">SPORTS |</a></li>
+    </ul>
+</div>
+<div class="hamburger">
+    <div class="lines1"></div>
+    <div class="lines2"></div>
+    <div class="lines3"></div>
+</div>
+<div class="close"><img src="{%  static 'svg/close.svg' %}" alt=""></div>
+<hr>
+
+</div>
+
+
+</nav>
+
+<!-- first part of the code -->
+<div class="firstpart">
+
+<div class="overall_a">
+    <!-- start for loop -->
+    
+<div class="a-text">
+
+    {% for topic in topics|slice:'0:3' %}
+    <img src="{{topic.image.url}} " alt="" style="border-radius: 20px;">  
+    <h3><a href="{% url 'content' topic.id  %}">{{topic.title}}</a></h3>
+    <p> {{topic.body|truncatechars:40}}</p>
+    
+    <p>written by: <span>{{topic.owner.username}}</span></p>
+    <i>Date created may 29</i>
+    <!-- invisible text -->
+    <div class="invisible">
+        <span>{{topic.title_2}}</span>
+        <p>{{topic.body_2}}</p>
+    </div>
+    {% endfor%}
+    <!--  -->
+</div>
+
+<hr>
+</div>
+<!-- end for loop -->
+<div class="firstpart_2">
+
+
+<div class="b-text">
+   
+    <h1>BUISINESS</h1>
+    {%for topics in topic|slice:'0:3' %}
+    <img src="{{topics.image.url }}" alt="" style="height: 180px; border-radius: 10px;">
+    <h3><a href="{%url 'article'  topics.id %}">{{topics.title|truncatechars:50}}</a></h3>
+
+    <p>{{topics.body|truncatechars:170}}</p>
+    <hr>
+<!-- <ul>
+
+    <li><a href="">-s Renews Calls for Weapons</a></li>
+    <hr>
+    <li><a href="">-Poland Adds to Ukraine’s Artillery </a></li>
+    <hr>
+</ul> -->
+{%endfor%}
+</div>
+</div>
+<div class="firstpart3"  style="margin-left: 0px;">
+    <div class="c-text">
+    <h1 style="background-color: lightgray;"><span>Weekend Reads</span></h1>
+    {% for weekend in weekend|slice:'0:3' %}
+    <img src="{{weekend.image.url}}" alt="">
+    <h1><a href="{% url 'weekend' weekend.id %}">{{weekend.title|truncatechars:50}}</a></h1>
+    <p>{{weekend.body|truncatechars:40}}</p>
+    <p>created by:{{weekend.owner.username}}</p>
+    <i>Date created: may 29</i>
+    {%endfor%}
+</div>
+<hr>
+<!-- <div class="opinions" style="border-left: 3px solid lightgrey; ">
+
+    <h1>OPINIONS</h1>
+    {% for opinion in opinion %}
+    <div class="over_op" >
+    <div class="op2" >
+        <img src="{{opinion.image.url}}" alt="">       
+    </div>
+    <div class="op3"><h3 style="left:-50px;"><a href="">{{opinion.title}}</a></h3></div>
+   
+</div>
+<p>Written by: {{opinion.owner.username}}</p>
+<i>Date created:29 of may</i>
+{% endfor%}
+</div> -->
+
+</div>
+</div>
+<div>
+<hr>
+<!-- second part -->
+
+
+<hr>
+<footer style="top: 80px;">
+    <h1>THANKS FOR READING HOPE YOU ENJOYED IT</h1>
+    <button><a href="{% url 'home' %}">Back to top</a></button>
+</footer>
+    </section>
+
+    <script src="{% static 'index.js' %}"></script>
+</body>
+</html>
