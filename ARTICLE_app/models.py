@@ -32,7 +32,7 @@ class Business(models.Model):
     image =models.ImageField(upload_to= 'blog_image' )
     # image2 =models.ImageField(upload_to= 'blog_image' )
     def __str__(self):
-        return self.title
+        return self.title,self.id
 
     class Meta:
         ordering=['-id']

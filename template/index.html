@@ -12,11 +12,11 @@
       rel="stylesheet"
     />
 </head>
-<body style="height: 1750px;">
+<body >
     <section>
 <nav>
 <div class="wrapper">
-<h1>WELCOME TO Z-BLOG POST.</h1>
+<h1><span class="auto"></span></h1>
 <ul class="firstul">
     <li>English Edition |</li>
     <li>Print Edition |</li>
@@ -72,6 +72,7 @@
     <p>written by: <span>{{topic.owner.username}}</span></p>
     <i>Date created may 29</i>
     <!-- invisible text -->
+    
     <div class="invisible">
         <span>{{topic.title_2}}</span>
         <p>{{topic.body_2}}</p>
@@ -146,6 +147,17 @@
     <button><a href="{% url 'home' %}">Back to top</a></button>
 </footer>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var typed= new Typed(".auto",{
+            strings:[" Welcome to Z-blog blost"],
+            typeSpeed:100,
+            backSpeed:100,
+            loop:true
+            
+        })
+    </script>
 
     <script src="{% static 'index.js' %}"></script>
 </body>
